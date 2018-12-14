@@ -10,15 +10,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class ConnectionUtil {
-	
-	public static Connection getConnection() throws SQLException {
-		String url = "";
-		String user = "";
-		String pass = "";
-		return DriverManager.getConnection(url,user,pass);
-	}
-	
-	
+		
 	public static Connection getConnection(String filename) throws SQLException, IOException {
 		Properties prop = new Properties();
 		InputStream in = new FileInputStream(filename);

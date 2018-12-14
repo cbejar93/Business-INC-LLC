@@ -6,6 +6,7 @@
 	<artifactId>project-1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Server1</name>
+	<packaging>war</packaging>
 
 	<properties>
 		<maven.compiler.sources>1.8</maven.compiler.sources>
@@ -17,6 +18,11 @@
 			<groupId>com.oracle.ojdbc</groupId>
 			<artifactId>ojdbc</artifactId>
 			<version>12.1.0.1</version>
+		</dependency>
+		<dependency>
+				<groupId>javax.servlet</groupId>
+    			<artifactId>javax.servlet-api</artifactId>
+    			<version>4.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.oauth-client</groupId>
