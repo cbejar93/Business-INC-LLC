@@ -104,6 +104,22 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	public void updateEmployee(Employee e) {
 		// TODO Auto-generated method stub
+		String sql = "UPDATE EMPLOYEE SET FIRSTNAME = ?, LASTNAME=?, EMAIL=? WHERE EMPLOYEE_ID = ?";
+		
+		try {
+			Connection con = ConnectionUtil.getConnection("connection.properties");
+			PreparedStatement psmt = con.prepareStatement(sql);
+			psmt.setString(1, e.getFirstName());
+			psmt.setString(2, e.getLastName());
+			psmt.setString(3, e.getEmail());
+			psmt.setInt(4, e.getEmployeeID());
+			psmt.executeUpdate();
+			con.close();
+		} catch (SQLException | IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
 		
 	}
 
