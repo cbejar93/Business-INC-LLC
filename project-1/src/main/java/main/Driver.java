@@ -31,6 +31,7 @@ public class Driver {
 		for (Employee e: emps) {
 			System.out.println(e);
 		}
+		ed.getEmployeeByID(2);
 
 	}
 	

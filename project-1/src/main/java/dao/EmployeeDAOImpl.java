@@ -25,6 +25,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 				while (rs.next()) {
 					emp.add(new Employee(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
 				}
+				con.close();
+				rs.close();
 				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -33,12 +35,34 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
+		
 		return emp;
 	}
 
 	public Employee getEmployeeByID(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		Employee emp = null;
+		String sql = "SELECT * FROM EMPLOYEE WHERE EMPLOYEE_ID = ?";
+		try {
+			Connection con = ConnectionUtil.getConnection("connection.properties");
+
+			PreparedStatement ptsm = con.prepareStatement(sql);
+			ptsm.setInt(1, id);
+
+			ResultSet rs = ptsm.executeQuery();
+			
+			while(rs.next()) {
+				emp =new Employee(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5));
+			}
+			System.out.println(emp);
+			con.close();
+			rs.close();
+		} catch (SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return emp;
 	}
 
 	public void createEmployee(Employee e) {
