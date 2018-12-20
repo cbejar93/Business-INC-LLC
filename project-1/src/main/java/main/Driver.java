@@ -32,8 +32,9 @@ public class Driver {
 			System.out.println(e);
 		}
 		ed.getEmployeeByID(2);
-		Employee ed2 = new Employee(3,"Max","Couch","mcouch91@gmail.com");
-		ed.createEmployee(ed2);
+//		Employee ed2 = new Employee(3,"Max","Couch","mcouch91@gmail.com");
+//		ed.createEmployee(ed2);
+		ed.deleteEmployee(3);
 
 	}
 	

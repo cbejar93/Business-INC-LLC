@@ -87,6 +87,18 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	public void deleteEmployee(int id) {
 		// TODO Auto-generated method stub
+		String sql = "DELETE FROM EMPLOYEE WHERE EMPLOYEE_ID = ?";
+		try {
+			Connection con = ConnectionUtil.getConnection("connection.properties");
+			PreparedStatement ppmt = con.prepareStatement(sql);
+			ppmt.setInt(1, id);
+			ppmt.executeUpdate();
+			con.close();
+		} catch (SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		
 	}
 
