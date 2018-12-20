@@ -1,6 +1,14 @@
 package beans;
 
 public class Employee {
+	public Employee(int googleID, int employeeID, String firstName, String lastName, String email) {
+		super();
+		this.googleID = googleID;
+		this.employeeID = employeeID;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+	}
 	private int googleID;
 	private int employeeID;
 	private String firstName;
