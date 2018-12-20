@@ -9,6 +9,15 @@ public class Employee {
 		this.lastName = lastName;
 		this.email = email;
 	}
+	
+	public Employee(int googleID , String firstName, String lastName, String email) {
+		super();
+		this.googleID = googleID;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+	}
+	
 	private int googleID;
 	private int employeeID;
 	private String firstName;

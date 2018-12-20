@@ -67,6 +67,21 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	public void createEmployee(Employee e) {
 		// TODO Auto-generated method stub
+		String sql = "INSERT INTO EMPLOYEE (google_id, FIRSTNAME, LASTNAME, EMAIL) \r\n" + 
+				"VALUES (?,?,?,?) ";
+		try {
+			Connection con = ConnectionUtil.getConnection("connection.properties");
+			PreparedStatement psmt = con.prepareStatement(sql);
+			psmt.setInt(1, e.getGoogleID());
+			psmt.setString(2, e.getFirstName());
+			psmt.setString(3, e.getLastName());
+			psmt.setString(4, e.getEmail());
+			psmt.executeUpdate();
+			con.close();
+		} catch (SQLException | IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} 
 		
 	}
 
