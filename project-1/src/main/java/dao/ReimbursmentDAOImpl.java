@@ -97,6 +97,23 @@ public class ReimbursmentDAOImpl implements ReimbursmentDAO {
 	@Override
 	public void deleteReimbursment(int id) {
 		// TODO Auto-generated method stub
+		Reimbursment rm = null;
+		String sql = "DELETE FROM REIMBURSEMENT WHERE R_ID = ?";
+		try {
+			Connection con = ConnectionUtil.getConnection("connection.properties");
+
+			PreparedStatement ptsm = con.prepareStatement(sql);
+			ptsm.setInt(1, id);
+
+			ptsm.executeUpdate();
+			
+			
+			System.out.println(rm);
+			con.close();
+		} catch (SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
