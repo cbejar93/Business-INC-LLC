@@ -1,14 +1,11 @@
 package main;
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 
 import beans.Employee;
-import dao.EmployeeDAO;
-import dao.EmployeeDAOImpl;
-import util.ConnectionUtil;
+import beans.Reimbursment;
+import dao.ReimbursmentDAO;
+import dao.ReimbursmentDAOImpl;
 
 public class Driver {
 
@@ -26,17 +23,24 @@ public class Driver {
 //			e.printStackTrace();
 //		}
 		
-		EmployeeDAO ed = new  EmployeeDAOImpl();
-		List<Employee> emps = ed.employeeAll();
-		for (Employee e: emps) {
-			System.out.println(e);
-		}
-		ed.getEmployeeByID(2);
+//		EmployeeDAO ed = new  EmployeeDAOImpl();
+//		List<Employee> emps = ed.employeeAll();
+//		for (Employee e: emps) {
+//			System.out.println(e);
+//		}
+//		ed.getEmployeeByID(2);
 //		Employee ed2 = new Employee(3,"Max","Couch","mcouch91@gmail.com");
 //		ed.createEmployee(ed2);
 //		ed.deleteEmployee(3);
-		Employee ed3 = new Employee(3,4,"Timmy","Couch","mcouch91@gmail.com");
-		ed.updateEmployee(ed3);
+//		Employee ed3 = new Employee(3,4,"Timmy","Couch","mcouch91@gmail.com");
+//		ed.updateEmployee(ed3);
+		ReimbursmentDAO rmb = new  ReimbursmentDAOImpl();
+		List<Reimbursment> reims = rmb.ReimbursmentAll();
+		for (Reimbursment r: reims) {
+			System.out.println(r);
+		}
+		rmb.getReimbursmentByID(2);
+		
 
 
 	}

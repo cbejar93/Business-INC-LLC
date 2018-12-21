@@ -17,7 +17,7 @@ public class ReimbursmentDAOImpl implements ReimbursmentDAO {
 	@Override
 	public List<Reimbursment> ReimbursmentAll() {
 		List<Reimbursment> riem = new ArrayList<>();
-		String sql = "SELECT * FROM REIMBURSMENT";
+		String sql = "SELECT * FROM REIMBURSEMENT";
 		try {
 			try {
 				Connection con = ConnectionUtil.getConnection("connection.properties");
@@ -39,12 +39,32 @@ public class ReimbursmentDAOImpl implements ReimbursmentDAO {
 		
 		return riem;
 	}	
-	}
+	
 
 	@Override
-	public Employee getReimbursmentByID(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Reimbursment getReimbursmentByID(int id) {
+		Reimbursment rm = null;
+		String sql = "SELECT * FROM REIMBURSEMENT WHERE R_ID = ?";
+		try {
+			Connection con = ConnectionUtil.getConnection("connection.properties");
+
+			PreparedStatement ptsm = con.prepareStatement(sql);
+			ptsm.setInt(1, id);
+
+			ResultSet rs = ptsm.executeQuery();
+			
+			while(rs.next()) {
+				rm =new Reimbursment(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getString(6),rs.getString(7), rs.getString(8));
+			}
+			System.out.println(rm);
+			con.close();
+			rs.close();
+		} catch (SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return rm;
 	}
 
 	@Override
