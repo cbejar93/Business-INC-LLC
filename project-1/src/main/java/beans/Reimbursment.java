@@ -14,6 +14,17 @@ public class Reimbursment {
 		this.date = date;
 		this.whoResolved = whoResolved;
 	}
+	
+	public Reimbursment(String description, int amount, int pictureID, int employeeID, String resolved,
+			String date, String whoResolved) {
+		this.description = description;
+		this.amount = amount;
+		this.pictureID = pictureID;
+		this.employeeID = employeeID;
+		this.resolved = resolved;
+		this.date = date;
+		this.whoResolved = whoResolved;
+	}
 	private int rID;
 	private String description;
 	private int amount;

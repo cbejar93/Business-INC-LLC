@@ -40,6 +40,8 @@ public class Driver {
 			System.out.println(r);
 		}
 		rmb.getReimbursmentByID(2);
+		Reimbursment rm1 = new Reimbursment("plates", 290, 4, 1,"APPROVED", "10/14/17", "EDDY");
+		rmb.createReimbursment(rm1);
 		
 
 

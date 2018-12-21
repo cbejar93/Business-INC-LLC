@@ -70,6 +70,27 @@ public class ReimbursmentDAOImpl implements ReimbursmentDAO {
 	@Override
 	public void createReimbursment(Reimbursment r) {
 		// TODO Auto-generated method stub
+		String sql = "INSERT INTO REIMBURSEMENT (R_DESCRIPTION, AMOUNT, PICTURE_ID, EMPLOYEE_ID, RESOLVED, TIME_RES, WHO_RES) \r\n" + 
+				"VALUES (?,?,?,?,?,?,?) ";
+		try {
+			Connection con = ConnectionUtil.getConnection("connection.properties");
+			PreparedStatement psmt = con.prepareStatement(sql);
+			psmt.setString(1, r.getDescription());
+			psmt.setInt(2, r.getAmount());
+			psmt.setInt(3, r.getPictureID());
+			psmt.setInt(4, r.getEmployeeID());
+			psmt.setString(5, r.getResolved());
+			psmt.setString(6, r.getDate());
+			psmt.setString(7, r.getWhoResolved());
+
+
+			psmt.executeUpdate();
+			con.close();
+		} catch (SQLException | IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} 
+		
 		
 	}
 
