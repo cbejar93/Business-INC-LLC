@@ -23,7 +23,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 				PreparedStatement pstm = con.prepareStatement(sql);
 				ResultSet rs = pstm.executeQuery();
 				while (rs.next()) {
-					emp.add(new Employee(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4),
+					emp.add(new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
 							rs.getString(5)));
 				}
 				con.close();
@@ -53,7 +53,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			ResultSet rs = ptsm.executeQuery();
 
 			while (rs.next()) {
-				emp = new Employee(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5));
+				emp = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
 			}
 			System.out.println(emp);
 			con.close();
@@ -68,11 +68,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	public void createEmployee(Employee e) {
 		// TODO Auto-generated method stub
-		String sql = "INSERT INTO EMPLOYEE (google_id, FIRSTNAME, LASTNAME, EMAIL) \r\n" + "VALUES (?,?,?,?) ";
+		String sql = "INSERT INTO EMPLOYEE (PASSWORD, FIRSTNAME, LASTNAME, EMAIL) \r\n" + "VALUES (?,?,?,?) ";
 		try {
 			Connection con = ConnectionUtil.getConnection("connection.properties");
 			PreparedStatement psmt = con.prepareStatement(sql);
-			psmt.setInt(1, e.getGoogleID());
+			psmt.setString(1, e.getPassword());
 			psmt.setString(2, e.getFirstName());
 			psmt.setString(3, e.getLastName());
 			psmt.setString(4, e.getEmail());
