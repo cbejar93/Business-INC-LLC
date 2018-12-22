@@ -56,4 +56,15 @@
     <url-pattern>/Profile</url-pattern>
     <url-pattern>/profile</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Session</display-name>
+    <servlet-name>Session</servlet-name>
+    <servlet-class>servlet.Session</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Session</servlet-name>
+    <url-pattern>/Session</url-pattern>
+    <url-pattern>/session</url-pattern>
+  </servlet-mapping>
 </web-app>

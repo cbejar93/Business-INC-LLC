@@ -1,24 +1,30 @@
-const clientID = "118785532196-avsm0e3idr3irvok4aflni1vnv2p3gf9.apps.googleusercontent.com";
-const clientSeceret = "zeTSk7RflyhAlsdZD14aPy-2";
+let user = {};
 
-function onSignIn(googleUser) {
-    var profile = googleUser.getBasicProfile();
-    console.log('ID: ' + profile.getId());
-    console.log('Name: ' + profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail());
-    console.log('id_token: ' + googleUser.getAuthResponse().id_token);
+window.onload = function(){
+	populateUser();
+}
 
-    //do not post all above info to the server because that is not secure.
-    //just send the id_token
+function populateUser(){
+	//send a GET request to localhost:7001/SessionMgmtDemo/session
+	fetch("http://localhost:7001/project-1/session").then(function(response) {
+		return response.json();
+	}).then(function(data){
+		//check whether there was a valid session returned
+		//define behavior for no user returned 
+		if (data.session === null) {
+			console.log("data.session was null");
+			window.location = "http://localhost:7001/project-1/landing";
+		} else {
+			//define behavior for user returned
+			user = data;
+			document.getElementById("username").innerText = "Username: "+user.username;
+			document.getElementById("firstname").innerText = "First name: "+user.firstname;
+			document.getElementById("lastname").innerText = "Last name: "+user.lastname;
+			document.getElementById("email").innerText = "Email: "+user.email;
+		}
+	});
+	
 
-    var redirectUrl = 'login';
-
-    //using jquery to post data dynamically
-    var form = $('<form action="' + redirectUrl + '" method="post">' +
-                     '<input type="text" name="id_token" value="' +
-                      googleUser.getAuthResponse().id_token + '" />' +
-                                                           '</form>');
-    $('body').append(form);
-    form.submit();
- }
+	
+	
+}
