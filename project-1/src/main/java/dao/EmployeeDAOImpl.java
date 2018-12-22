@@ -23,19 +23,20 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 				PreparedStatement pstm = con.prepareStatement(sql);
 				ResultSet rs = pstm.executeQuery();
 				while (rs.next()) {
-					emp.add(new Employee(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+					emp.add(new Employee(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4),
+							rs.getString(5)));
 				}
 				con.close();
 				rs.close();
-				
+
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return emp;
 	}
 
@@ -50,9 +51,9 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			ptsm.setInt(1, id);
 
 			ResultSet rs = ptsm.executeQuery();
-			
-			while(rs.next()) {
-				emp =new Employee(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5));
+
+			while (rs.next()) {
+				emp = new Employee(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5));
 			}
 			System.out.println(emp);
 			con.close();
@@ -61,14 +62,13 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return emp;
 	}
 
 	public void createEmployee(Employee e) {
 		// TODO Auto-generated method stub
-		String sql = "INSERT INTO EMPLOYEE (google_id, FIRSTNAME, LASTNAME, EMAIL) \r\n" + 
-				"VALUES (?,?,?,?) ";
+		String sql = "INSERT INTO EMPLOYEE (google_id, FIRSTNAME, LASTNAME, EMAIL) \r\n" + "VALUES (?,?,?,?) ";
 		try {
 			Connection con = ConnectionUtil.getConnection("connection.properties");
 			PreparedStatement psmt = con.prepareStatement(sql);
@@ -81,8 +81,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		} catch (SQLException | IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		} 
-		
+		}
+
 	}
 
 	public void deleteEmployee(int id) {
@@ -99,13 +99,12 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			e.printStackTrace();
 		}
 
-		
 	}
 
 	public void updateEmployee(Employee e) {
 		// TODO Auto-generated method stub
 		String sql = "UPDATE EMPLOYEE SET FIRSTNAME = ?, LASTNAME=?, EMAIL=? WHERE EMPLOYEE_ID = ?";
-		
+
 		try {
 			Connection con = ConnectionUtil.getConnection("connection.properties");
 			PreparedStatement psmt = con.prepareStatement(sql);
@@ -120,7 +119,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			e1.printStackTrace();
 		}
 
-		
 	}
 
 }

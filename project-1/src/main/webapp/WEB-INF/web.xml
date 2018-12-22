@@ -23,4 +23,26 @@
     <servlet-name>EmployeeServlet</servlet-name>
     <url-pattern>/employees</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LandingServlet</display-name>
+    <servlet-name>LandingServlet</servlet-name>
+    <servlet-class>servlet.LandingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LandingServlet</servlet-name>
+    <url-pattern>/LandingServlet</url-pattern>
+    <url-pattern>/landing</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Login</display-name>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>servlet.Login</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/Login</url-pattern>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
 </web-app>

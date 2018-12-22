@@ -24,22 +24,22 @@ public class ReimbursmentDAOImpl implements ReimbursmentDAO {
 				PreparedStatement pstm = con.prepareStatement(sql);
 				ResultSet rs = pstm.executeQuery();
 				while (rs.next()) {
-					riem.add(new Reimbursment(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getString(6),rs.getString(7), rs.getString(8)));
+					riem.add(new Reimbursment(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5),
+							rs.getString(6), rs.getString(7), rs.getString(8)));
 				}
 				con.close();
 				rs.close();
-				
+
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return riem;
-	}	
-	
+	}
 
 	@Override
 	public Reimbursment getReimbursmentByID(int id) {
@@ -52,9 +52,10 @@ public class ReimbursmentDAOImpl implements ReimbursmentDAO {
 			ptsm.setInt(1, id);
 
 			ResultSet rs = ptsm.executeQuery();
-			
-			while(rs.next()) {
-				rm =new Reimbursment(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getString(6),rs.getString(7), rs.getString(8));
+
+			while (rs.next()) {
+				rm = new Reimbursment(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5),
+						rs.getString(6), rs.getString(7), rs.getString(8));
 			}
 			System.out.println(rm);
 			con.close();
@@ -63,15 +64,15 @@ public class ReimbursmentDAOImpl implements ReimbursmentDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return rm;
 	}
 
 	@Override
 	public void createReimbursment(Reimbursment r) {
 		// TODO Auto-generated method stub
-		String sql = "INSERT INTO REIMBURSEMENT (R_DESCRIPTION, AMOUNT, PICTURE_ID, EMPLOYEE_ID, RESOLVED, TIME_RES, WHO_RES) \r\n" + 
-				"VALUES (?,?,?,?,?,?,?) ";
+		String sql = "INSERT INTO REIMBURSEMENT (R_DESCRIPTION, AMOUNT, PICTURE_ID, EMPLOYEE_ID, RESOLVED, TIME_RES, WHO_RES) \r\n"
+				+ "VALUES (?,?,?,?,?,?,?) ";
 		try {
 			Connection con = ConnectionUtil.getConnection("connection.properties");
 			PreparedStatement psmt = con.prepareStatement(sql);
@@ -83,15 +84,13 @@ public class ReimbursmentDAOImpl implements ReimbursmentDAO {
 			psmt.setString(6, r.getDate());
 			psmt.setString(7, r.getWhoResolved());
 
-
 			psmt.executeUpdate();
 			con.close();
 		} catch (SQLException | IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		} 
-		
-		
+		}
+
 	}
 
 	@Override
@@ -106,21 +105,61 @@ public class ReimbursmentDAOImpl implements ReimbursmentDAO {
 			ptsm.setInt(1, id);
 
 			ptsm.executeUpdate();
-			
-			
+
 			System.out.println(rm);
 			con.close();
 		} catch (SQLException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	@Override
 	public void updateReimbursment(Reimbursment r) {
 		// TODO Auto-generated method stub
-		
+		String sql = "UPDATE REIMBURSEMENT SET RESOLVED = ?, TIME_RES=?, WHO_RES =? WHERE  R_ID = ?";
+		System.out.println(r.getrID());
+		try {
+			Connection con = ConnectionUtil.getConnection("connection.properties");
+			PreparedStatement psmt = con.prepareStatement(sql);
+			psmt.setString(1, r.getResolved());
+			psmt.setString(2, r.getDate());
+			psmt.setString(3, r.getWhoResolved());
+			psmt.setInt(4, r.getrID());
+			psmt.executeUpdate();
+			con.close();
+		} catch (SQLException | IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+	}
+	
+	public List<Reimbursment> getReimbursmentByEmployeeId(int eid) {
+		List<Reimbursment> rm = new ArrayList<>();
+		String sql = "SELECT * FROM REIMBURSEMENT WHERE EMPLOYEE_ID = ?";
+		try {
+			Connection con = ConnectionUtil.getConnection("connection.properties");
+
+			PreparedStatement ptsm = con.prepareStatement(sql);
+			ptsm.setInt(1, eid);
+
+			ResultSet rs = ptsm.executeQuery();
+
+			while (rs.next()) {
+				rm.add(new Reimbursment(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5),
+						rs.getString(6), rs.getString(7), rs.getString(8)));
+			}
+			System.out.println(rm);
+			con.close();
+			rs.close();
+		} catch (SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return rm;
 	}
 
 }
