@@ -1,0 +1,17 @@
+#tc{
+    height: 100px;
+    width: 100px;
+    background-color: #f6511d;
+    color: white;
+    margin-bottom: 0px;
+  
+  }
+  span{
+    color:white;
+  }
+  
+  #ball {
+    height: 100px;
+    width:100px;
+    background-color: red;
+  }

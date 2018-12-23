@@ -2,7 +2,31 @@ let user = {};
 
 window.onload = function(){
 	populateUser();
+	$('document').ready(function(){
+		// setTimeout(typedJS(),1000000);
+
+
+		
+	})
 } 
+
+function typedJS (){
+
+	var typed = new Typed('#typed',{
+		strings: [`Welcome back, ${user.firstName}`],
+		typeSpeed: 50,
+		fadeOut: true,
+		showCursor: false,
+		onComplete: (self) => {
+				// $('#typed').slideUp();
+		}		
+		
+		}
+		
+		);
+}
+
+
 
 function populateUser(){
 // 	//send a GET request to localhost:7001/SessionMgmtDemo/session
@@ -17,7 +41,8 @@ function populateUser(){
 		// } else {
 			//define behavior for user returned
             user = data;
-            console.log(user);
+			console.log(user);
+			typedJS();
 			// document.getElementById("username").innerText = "Username: "+user.username;
 			// document.getElementById("firstname").innerText = "First name: "+user.firstname;
 			// document.getElementById("lastname").innerText = "Last name: "+user.lastname;
