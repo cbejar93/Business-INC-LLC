@@ -61,7 +61,7 @@ public class LandingServlet extends HttpServlet {
 		} else {
 			session.setAttribute("problem", "invalid credentials");
 			//redirect user to login page if authentication fails
-			resp.sendRedirect("login");
+			resp.sendRedirect("profile");
 		}
 	}
 

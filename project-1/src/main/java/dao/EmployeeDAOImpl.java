@@ -1,6 +1,7 @@
 package dao;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,9 +14,14 @@ import util.ConnectionUtil;
 
 public class EmployeeDAOImpl implements EmployeeDAO {
 
+	InputStream in = this.getClass().getResourceAsStream("connection.properties");
+
+	
 	public List<Employee> employeeAll() {
 		// TODO Auto-generated method stub
 		List<Employee> emp = new ArrayList<>();
+//		InputStream in = this.getClass().getResourceAsStream("connection.properties");
+//		System.out.println(in);
 		String sql = "SELECT * FROM EMPLOYEE";
 		try {
 			try {
@@ -28,6 +34,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 				}
 				con.close();
 				rs.close();
+//				in.close();
+
 
 			} catch (IOException e) {
 				// TODO Auto-generated catch block

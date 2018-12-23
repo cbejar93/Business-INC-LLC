@@ -25,26 +25,26 @@ public class Driver {
 //			e.printStackTrace();
 //		}
 
-//		EmployeeDAO ed = new  EmployeeDAOImpl();
-//		List<Employee> emps = ed.employeeAll();
-//		for (Employee e: emps) {
-//			System.out.println(e);
-//		}
+		EmployeeDAO ed = new  EmployeeDAOImpl();
+		List<Employee> emps = ed.employeeAll();
+		for (Employee e: emps) {
+			System.out.println(e);
+		}
 //		ed.getEmployeeByID(2);
 //		Employee ed2 = new Employee(3,"Max","Couch","mcouch91@gmail.com");
 //		ed.createEmployee(ed2);
 //		ed.deleteEmployee(3);
 //		Employee ed3 = new Employee(3,4,"Timmy","Couch","mcouch91@gmail.com");
 //		ed.updateEmployee(ed3);
-		ReimbursmentDAO rmb = new ReimbursmentDAOImpl();
+//		ReimbursmentDAO rmb = new ReimbursmentDAOImpl();
 //		List<Reimbursment> reims = rmb.ReimbursmentAll();
 //		for (Reimbursment r : reims) {
 //			System.out.println(r);
 //		}
 //		rmb.getReimbursmentByID(2);
 //		Reimbursment rm1 = new Reimbursment("pens", 4500, 7, 1, "PENDING", null, null);
-		Reimbursment rm2 = new Reimbursment(21,"pens", 4500, 7, 1, "APPROVED", "12/22/18", "Eddy");
-		rmb.updateReimbursment(rm2);
+//		Reimbursment rm2 = new Reimbursment(21,"pens", 4500, 7, 1, "APPROVED", "12/22/18", "Eddy");
+//		rmb.updateReimbursment(rm2);
 //		Reimbursment rm3 = new Reimbursment("housing", 4500, 7, 1, "DENIED", "12/22/18", "Eddy");
 //
 //		rmb.createReimbursment(rm3);
