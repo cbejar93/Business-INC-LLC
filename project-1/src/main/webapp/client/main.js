@@ -13,12 +13,13 @@ window.onload = function(){
 function typedJS (){
 
 	var typed = new Typed('#typed',{
-		strings: [`Welcome back, ${user.firstName}`],
-		typeSpeed: 50,
+		strings: [`Welcome back, ^400 ${user.firstName} ^600`],
+		typeSpeed: 60,
 		fadeOut: true,
 		showCursor: false,
 		onComplete: (self) => {
-				// $('#typed').slideUp();
+				$('#typed').slideUp();
+				moveDiv();
 		}		
 		
 		}
@@ -26,7 +27,9 @@ function typedJS (){
 		);
 }
 
-
+function moveDiv(){
+	$('#tc').slideUp();
+}
 
 function populateUser(){
 // 	//send a GET request to localhost:7001/SessionMgmtDemo/session

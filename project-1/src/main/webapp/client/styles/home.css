@@ -1,17 +1,21 @@
 #tc{
-    height: 100px;
-    width: 100px;
+    height: 15%;
+    line-height: 100px;
+    width: 50%;
     background-color: #f6511d;
     color: white;
-    margin-bottom: 0px;
+    margin-top: 40%;
+    margin-left: 30%;
+    text-align: center;
   
   }
   span{
     color:white;
+    margin-top: 20%
   }
   
-  #ball {
+  /* #ball {
     height: 100px;
     width:100px;
     background-color: red;
-  }
+  } */
