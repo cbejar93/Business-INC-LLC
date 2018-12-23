@@ -46,11 +46,13 @@ public class LandingServlet extends HttpServlet {
 		HttpSession session = req.getSession(); 
 		resp.setContentType("text/html");
 		//grab params from request 
-		Credentials cred = new Credentials(req.getParameter("username"),req.getParameter("password"));
+		Credentials cred = new Credentials(req.getParameter("email"),req.getParameter("password"));
 		//attempt to authenticate the user
 		Employee e = authService.isValidUser(cred);
+//		System.out.println(e);
 		//set user information as session attributes
 		if (e != null) {
+//			System.out.println(e);
 			session.setAttribute("eId", e.getEmployeeID());
 			session.setAttribute("firstname", e.getFirstName());
 			session.setAttribute("lastname", e.getLastName());
@@ -61,7 +63,7 @@ public class LandingServlet extends HttpServlet {
 		} else {
 			session.setAttribute("problem", "invalid credentials");
 			//redirect user to login page if authentication fails
-			resp.sendRedirect("profile");
+			resp.sendRedirect("landing");
 		}
 	}
 

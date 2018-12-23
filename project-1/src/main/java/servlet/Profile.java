@@ -26,9 +26,10 @@ public class Profile extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		HttpSession session = request.getSession(false);
-		if (session != null && session.getAttribute("username") != null) {
+//		System.out.println(session.getAttribute("eId"));
+
+		if (session != null && session.getAttribute("eId") != null) {
 			request.getRequestDispatcher("client/home.html").forward(request, response);
 		} else {
 			response.sendRedirect("landing");

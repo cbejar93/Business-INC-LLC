@@ -10,12 +10,13 @@ public class Employee {
 		this.password = password;
 	}
 
-	public Employee(int googleID, String firstName, String lastName, String email) {
+	public Employee(int employeeID, String firstName, String lastName, String email) {
 		super();
+		this.employeeID = employeeID;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		this.password = password;
+//		this.password = password;
 	}
 
 	private int employeeID;

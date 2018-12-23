@@ -31,14 +31,17 @@ public class Session extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
 		HttpSession session = request.getSession(false);
-		if (session != null && session.getAttribute("username") != null) {
+		if (session != null && session.getAttribute("eId") != null) {
 			try {
-				int userId = Integer.parseInt(session.getAttribute("userId").toString());
-				String username = session.getAttribute("username").toString();
+//				System.out.println("hello from session servlet"+session.getAttribute("eId"));
+				int userId = Integer.parseInt(session.getAttribute("eId").toString());
+//				String username = session.getAttribute("username").toString();
 				String firstname = session.getAttribute("firstname").toString();
 				String lastname = session.getAttribute("lastname").toString();
 				String email = session.getAttribute("email").toString();
-				Employee e = new Employee(userId, username, firstname, lastname, email);
+				System.out.println(userId);
+				Employee e = new Employee(userId, firstname, lastname, email);
+				System.out.println(e);
 				response.getWriter().write((new ObjectMapper()).writeValueAsString(e));
 			} catch (Exception e) {
 				e.printStackTrace();
