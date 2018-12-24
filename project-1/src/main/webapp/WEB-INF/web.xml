@@ -67,4 +67,15 @@
     <url-pattern>/Session</url-pattern>
     <url-pattern>/session</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReimbursmentServlet</display-name>
+    <servlet-name>ReimbursmentServlet</servlet-name>
+    <servlet-class>servlet.ReimbursmentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReimbursmentServlet</servlet-name>
+    <url-pattern>/ReimbursmentServlet</url-pattern>
+    <url-pattern>/servlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -13,9 +13,78 @@
     color:white;
     margin-top: 20%
   }
+
+  .getRiems{
+        height: 150px;
+        width: 400px;
+        border: 2px solid #f6511d;
+        border-radius: 4px;
+        overflow: hidden;
+        background-image: url("client/images/planning.jpg")
+  }
+
+ 
+  .background {
+    -webkit-filter: blur(3px); 
+    -moz-filter: blur(3px); 
+    -o-filter: blur(3px);
+    -ms-filter: blur(3px); 
+    filter: blur(3px); 
+}
   
   /* #ball {
     height: 100px;
     width:100px;
     background-color: red;
   } */
+
+  a {
+    text-decoration: none;
+    line-height: 80px;
+    color: black;
+  }
+
+  
+@media (min-width: 600px) {
+    .wrap {
+      width: 50%;
+      float: left;
+    }
+  }
+  [class^="btn-"] {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 80px;
+    max-width: 250px;
+    margin: 1rem auto;
+    text-transform: uppercase;
+    border: 1px solid currentColor;
+  }
+  
+.btn-6 {
+    color: #812cbe;
+  }
+  .btn-6 span {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: #40046b;
+    transition: width 0.4s ease-in-out, height 0.4s ease-in-out;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    z-index: -1;
+  }
+  .btn-6:hover {
+    color: #dac1ec;
+  }
+  .btn-6:hover span {
+    width: 225%;
+    height: 562.5px;
+  }
+  .btn-6:active {
+    background-color: #6b07b2;
+  }

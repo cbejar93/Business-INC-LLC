@@ -31,6 +31,23 @@ function moveDiv(){
 	$('#tc').slideUp();
 }
 
+$(function() {  
+	$('.btn-6')
+	  .on('mouseenter', function(e) {
+			  var parentOffset = $(this).offset(),
+				relX = e.pageX - parentOffset.left,
+				relY = e.pageY - parentOffset.top;
+			  $(this).find('span').css({top:relY, left:relX})
+	  })
+	  .on('mouseout', function(e) {
+			  var parentOffset = $(this).offset(),
+				relX = e.pageX - parentOffset.left,
+				relY = e.pageY - parentOffset.top;
+		  $(this).find('span').css({top:relY, left:relX})
+	  });
+	$('[href=#]').click(function(){return false});
+  });
+
 function populateUser(){
 // 	//send a GET request to localhost:7001/SessionMgmtDemo/session
 	fetch("http://localhost:7001/project-1/session").then(function(response) {
