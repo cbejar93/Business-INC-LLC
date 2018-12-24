@@ -2,13 +2,38 @@ let user = {};
 
 window.onload = function(){
 	populateUser();
+
 	$('document').ready(function(){
+
 		// setTimeout(typedJS(),1000000);
+		
 
 
 		
 	})
-} 
+
+}
+
+function eid (){
+	document.getElementById("eID").addEventListener('click',function(){
+		let url = new URL (`http://localhost:7001/project-1/reimbursment?eid=${user.employeeID}`)
+		let params = new URLSearchParams(url.search.slice(1));
+		params.append("eid", user.employeeID);
+		console.log(url);
+		console.log("hello");
+		fetch(url).then(function(response) {
+			return response.json();
+		}).then(function(data){
+				riems = data;
+				console.log(riems);
+				console.log("hello2");
+			
+		});
+	})
+	// $(".eID").click(function(){
+		
+	// })
+	} 
 
 function typedJS (){
 
@@ -28,25 +53,10 @@ function typedJS (){
 }
 
 function moveDiv(){
-	$('#tc').slideUp();
+	$("#tc").slideUp();
 }
 
-$(function() {  
-	$('.btn-6')
-	  .on('mouseenter', function(e) {
-			  var parentOffset = $(this).offset(),
-				relX = e.pageX - parentOffset.left,
-				relY = e.pageY - parentOffset.top;
-			  $(this).find('span').css({top:relY, left:relX})
-	  })
-	  .on('mouseout', function(e) {
-			  var parentOffset = $(this).offset(),
-				relX = e.pageX - parentOffset.left,
-				relY = e.pageY - parentOffset.top;
-		  $(this).find('span').css({top:relY, left:relX})
-	  });
-	$('[href=#]').click(function(){return false});
-  });
+
 
 function populateUser(){
 // 	//send a GET request to localhost:7001/SessionMgmtDemo/session
@@ -63,11 +73,9 @@ function populateUser(){
             user = data;
 			console.log(user);
 			typedJS();
-			// document.getElementById("username").innerText = "Username: "+user.username;
-			// document.getElementById("firstname").innerText = "First name: "+user.firstname;
-			// document.getElementById("lastname").innerText = "Last name: "+user.lastname;
-			// document.getElementById("email").innerText = "Email: "+user.email;
-		// }
+			eid();
+
+		
 	});
 	
 

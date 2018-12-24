@@ -21,11 +21,11 @@ public class ReimbursmentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private ObjectMapper om;
-	private ReimbursmentService ReimbursmentService;
+	private ReimbursmentService reimbursmentService;
 	
 	
     public ReimbursmentServlet() {
-    	ReimbursmentService = new ReimbursmentServiceImpl();
+    	reimbursmentService = new ReimbursmentServiceImpl();
 		om = new ObjectMapper();
 //		om.registerModule(new Module());
 		om.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
@@ -35,10 +35,12 @@ public class ReimbursmentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		switch (request.getRequestURI()) {
 				case "/project-1/reimbursment":
+					System.out.println(request.getRequestURI());
 					int eid = Integer.parseInt(request.getParameter("eid"));
-					response.getWriter().write(om.writeValueAsString(ReimbursmentService.getReimbursmentByEmployeeId(eid)));
+					response.getWriter().write(om.writeValueAsString(reimbursmentService.getReimbursmentByEmployeeId(eid)));
 					break;
 				case "/project-1/reimbursments":
+					response.getWriter().write(om.writeValueAsString(reimbursmentService.ReimbursmentAll()));
 		}
 	
 	}
