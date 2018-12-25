@@ -35,7 +35,7 @@ public class ReimbursmentServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		switch (request.getRequestURI()) {
 				case "/project-1/reimbursment":
-					System.out.println(request.getRequestURI());
+//					System.out.println(request.getRequestURI());
 					int eid = Integer.parseInt(request.getParameter("eid"));
 					response.getWriter().write(om.writeValueAsString(reimbursmentService.getReimbursmentByEmployeeId(eid)));
 					break;

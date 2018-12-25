@@ -1,7 +1,9 @@
 let user = {};
-
+let riems;
 window.onload = function(){
 	populateUser();
+	xOut();
+
 
 	$('document').ready(function(){
 
@@ -14,19 +16,80 @@ window.onload = function(){
 
 }
 
+function getDeleter(reim) {
+	return function() {
+		let url = new URL("http://localhost:7001/project-1/reimbursment")
+		console.log(`from inside delete ${reim}`);
+		fetch(url , {
+			method: 'delete',
+			body: reim,
+		}).catch(res);
+
+	}
+}
+
+function deleteData(rid){
+}
+
+function hideShowButtons(){
+	$("#buttondiv").toggle();
+	$("#eID").toggle();
+	$("#profilebutton").toggle();
+}
+
+function xOut(){
+	document.getElementById("reimx").addEventListener("click",function(){
+		$("#reimx").toggle();
+		$("#all").toggle();
+		hideShowButtons();
+		console.log("hellow");
+
+	})
+}
+
 function eid (){
 	document.getElementById("eID").addEventListener('click',function(){
 		let url = new URL (`http://localhost:7001/project-1/reimbursment?eid=${user.employeeID}`)
-		let params = new URLSearchParams(url.search.slice(1));
-		params.append("eid", user.employeeID);
-		console.log(url);
-		console.log("hello");
+		// let params = new URLSearchParams(url.search.slice(1));
+		hideShowButtons();
+		$("#reimx").toggle();
+		$("#all").toggle();
+
+		// console.log(url);
+		// console.log("hello");
 		fetch(url).then(function(response) {
 			return response.json();
 		}).then(function(data){
-				riems = data;
-				console.log(riems);
-				console.log("hello2");
+			$("#all").find("tbody").empty();
+				let riems = data;
+				console.log(data);
+				
+				for(let i =0; i< riems.length;i++){
+
+					let reim = riems[i]
+					let row = $('#datasec').append('<tr></tr>');
+					let data = 
+					$(`<td scope="row">${reim.description}</td>
+					<td>${reim.amount}</td>
+					<td>${reim.resolved}</td>
+					<td>${reim.whoResolved}</td>
+					<td><button type="button" id=update-${i} class="btn btn-success">Update</button></td>
+					<td><button type="button" id=delete-${i} class="btn btn-danger delete-button">Delete</button></td>
+					`)
+					row.append(data);
+					let deleter = getDeleter(reim);
+					data.find('.delete-button').click(deleter)
+					// deleteData();
+
+
+
+	
+				}
+
+
+				// console.log(riems);
+				// console.log("hello2");
+
 			
 		});
 	})
@@ -45,6 +108,8 @@ function typedJS (){
 		onComplete: (self) => {
 				$('#typed').slideUp();
 				moveDiv();
+				hideShowButtons();
+
 		}		
 		
 		}
@@ -63,13 +128,6 @@ function populateUser(){
 	fetch("http://localhost:7001/project-1/session").then(function(response) {
 		return response.json();
 	}).then(function(data){
-		//check whether there was a valid session returned
-		//define behavior for no user returned 
-		// if (data.session === null) {
-		// 	console.log("data.session was null");
-		// 	window.location = "http://localhost:7001/project-1/landing";
-		// } else {
-			//define behavior for user returned
             user = data;
 			console.log(user);
 			typedJS();

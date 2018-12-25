@@ -78,4 +78,15 @@
     <url-pattern>/ReimbursmentServlet</url-pattern>
     <url-pattern>/reimbursment</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Request</display-name>
+    <servlet-name>Request</servlet-name>
+    <servlet-class>servlet.Request</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Request</servlet-name>
+    <url-pattern>/Request</url-pattern>
+    <url-pattern>/request</url-pattern>
+  </servlet-mapping>
 </web-app>

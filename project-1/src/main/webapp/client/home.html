@@ -28,7 +28,7 @@
     <div class="row">
     <div class="col-auto">
     <nav id="web-nav">
-        <a href="landing.html">
+        <a href="http://localhost:7001/project-1/landing">
             <img class="logo img-rounded" src="client/images/wixlogo.jpg" alt="logo">
         </a>
         <ul id="menu">
@@ -48,7 +48,7 @@
                 </ul>
             </li>
             <li  class="subs work-menu show-subs">
-                <a class="main-link" href="request.html">Request</a>
+                <a class="main-link" href="http://localhost:7001/project-1/request">Request</a>
             </li>
             <li class="subs work-menu show-subs">
                     <a class="main-link" href="#">Logout</a>
@@ -111,8 +111,27 @@
             <div class="col-7">
                 <div id="tc">
                         <span id="typed"></span>
-                </div> 
-                <button id="eID">Danger</button>
+                </div>
+            <div id="buttondiv" style="display:none">
+                <button type="button" class="btn btn-info" id="eID" style="display:none">View All Reimbursments</button>
+                <button id="profilebutton" type="button" class="btn btn-info" style="display:none">Profile</button>
+            </div>
+                <table id="all" class="table table-hover" style="display:none">
+                    <i id ="reimx"  style="display:none" class="fas fa-times fa-2x"></i>
+                    <thead>
+                      <tr>
+                        <th scope="col">Description</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Approved By</th>
+                        <th scope="col">Update</th>
+                        <th scope="col">Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody id='datasec'>
+
+                    </tbody>
+                </table>
         
                            
                   <!-- <div id="ball"></div>       -->
