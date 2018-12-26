@@ -26,7 +26,7 @@
                     </a>
                     <ul id="menu">
                         <li class="subs work-menu show-subs">
-                            <a id="navclick" class="main-link">
+                            <a id="navclick" href="http://localhost:7001/project-1/profile" class="main-link">
                                 Profile
                             </a>
                             <ul class="link-subs" style="display: none;">
@@ -44,7 +44,7 @@
                             <a class="main-link" href="#">Request</a>
                         </li>
                         <li class="subs work-menu show-subs">
-                                <a class="main-link" href="#">Logout</a>
+                                <a class="main-link" id="logout" href="http://localhost:7001/project-1/landing">Logout</a>
                             </li>
                     </ul>
                     <ul id="address">
@@ -65,28 +65,28 @@
                 <div class="row mt-3">
                     <div class="col">
 
-                            <form action="localhost:7001/project-1/reimbursment" method="POST">
+                            <!-- <form action="localhost:7001/project-1/reimbursment" method="POST"> -->
                                 <div class="row mt-3">
                                     <div class="col">
-                                        <input type="number" name="name" class="question" id="nme" required autocomplete="off" />
+                                        <input type="number" name="amount" class="question" id="amt" required autocomplete="off" />
                                         <label for="nme"><span>Amount</span></label>
                                     </div>
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col mt-3">
-                                        <input type="text" name="message" rows="2" class="question" id="msg" required autocomplete="off"></input>
+                                        <input type="text" name="description" rows="2" class="question" id="dsc" required autocomplete="off"></input>
                                         <label for="msg"><span>Description</span></label>
                                     </div>
                                 </div>
                                 <div class="row mt-3">
-                                <div class="col mt-3">
-                                        <a href="#" class="btn">
-                                                <span class="btn-content">Login</span>
-                                                <span class="icon"><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
-                                        </a>
+                                    <div class="col mt-3">
+                                        <button type="button" id="rsubmit" class="btn btn-success">Submit!</button>
+
                                     </div>
+
                                 </div>
-                                  </form>
+                               
+                                  <!-- </form> -->
                     </div>
                 </div>
 
@@ -97,7 +97,7 @@
 
 </body>
 <!-- <script src="main.js"></script> -->
-<script src="client/main.js"></script>
+<script src="client/request.js"></script>
 
 
 </html>

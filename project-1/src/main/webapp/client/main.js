@@ -3,6 +3,8 @@ let riems;
 window.onload = function(){
 	populateUser();
 	xOut();
+	// submitRiem();
+	
 
 
 	$('document').ready(function(){
@@ -15,6 +17,7 @@ window.onload = function(){
 	})
 
 }
+
 
 function getDeleter(reim) {
 	return function() {

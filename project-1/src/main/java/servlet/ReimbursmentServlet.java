@@ -1,5 +1,6 @@
 package servlet;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -7,10 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+import beans.Reimbursment;
+import dao.ReimbursmentDAO;
+import dao.ReimbursmentDAOImpl;
 import service.ReimbursmentService;
 import service.ReimbursmentServiceImpl;
 
@@ -50,7 +53,26 @@ public class ReimbursmentServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		System.out.println("this is the doPost");
+		String dsc = request.getParameter("eID");
+		System.out.println(dsc);
+//		StringBuilder sb = new StringBuilder();
+//	    BufferedReader reader = request.getReader();
+//	    try {
+//	        String line;
+//	        while ((line = reader.readLine()) != null) {
+//	            sb.append(line).append('\n');
+//	        }
+//	    } finally {
+//	        reader.close();
+//	    }
+//	    System.out.println(sb.toString());
+		ReimbursmentDAO rmb = new ReimbursmentDAOImpl();
+
+	    ObjectMapper mapper = new ObjectMapper();
+	    Reimbursment riem = mapper.readValue(request.getInputStream(),Reimbursment.class);
+	    rmb.createReimbursment(riem);
+	    System.out.println(riem);
 	}
 
 	/**

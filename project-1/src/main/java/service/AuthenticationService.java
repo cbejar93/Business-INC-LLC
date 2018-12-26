@@ -23,14 +23,15 @@ public class AuthenticationService {
 //		System.out.println(email);
 //		System.out.println(password);
 		List<Employee> emps = ed.employeeAll();
-
 		if (email != null && password != null) {
 			for (Employee e1: emps) {
+				System.out.println(e1);
+
 //				System.out.println(e1.getEmail()+  e1.getPassword());
 				if (email.equals(e1.getEmail()) && password.equals(e1.getPassword())) {
 //					e = new Employee(5,username,"Merlin","Cat","wizcat@tampa.com");
 							e=e1;
-//							System.out.println(e);
+							System.out.println(e);
 							return e;
 				}
 				

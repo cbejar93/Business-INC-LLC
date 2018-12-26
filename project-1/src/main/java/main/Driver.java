@@ -25,11 +25,11 @@ public class Driver {
 //			e.printStackTrace();
 //		}
 
-		EmployeeDAO ed = new  EmployeeDAOImpl();
-		List<Employee> emps = ed.employeeAll();
-		for (Employee e: emps) {
-			System.out.println(e);
-		}
+//		EmployeeDAO ed = new  EmployeeDAOImpl();
+//		List<Employee> emps = ed.employeeAll();
+//		for (Employee e: emps) {
+//			System.out.println(e);
+//		}
 //		ed.getEmployeeByID(2);
 //		Employee ed2 = new Employee(3,"Max","Couch","mcouch91@gmail.com");
 //		ed.createEmployee(ed2);
@@ -48,7 +48,7 @@ public class Driver {
 //		Reimbursment rm3 = new Reimbursment("housing", 4500, 7, 1, "DENIED", "12/22/18", "Eddy");
 //
 //		rmb.createReimbursment(rm3);
-//		rmb.deleteReimbursment(22);
+//		rmb.deleteReimbursment(42);
 //		List<Reimbursment> reims = rmb.getReimbursmentByEmployeeId(1);
 //		for (Reimbursment r : reims) {
 //			System.out.println(r);

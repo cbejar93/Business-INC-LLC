@@ -1,6 +1,10 @@
 package beans;
 
 public class Reimbursment {
+	
+	public Reimbursment() {
+		
+	}
 
 	public Reimbursment(int rID, String description, int amount, int pictureID, int employeeID, String resolved,
 			String date, String whoResolved) {
@@ -24,6 +28,13 @@ public class Reimbursment {
 		this.resolved = resolved;
 		this.date = date;
 		this.whoResolved = whoResolved;
+	}
+	
+	public Reimbursment (String description, int amount, int employeeID, String resolved) {
+		this.description = description;
+		this.amount = amount;
+		this.employeeID = employeeID;
+		this.resolved = resolved;
 	}
 
 	private int rID;
